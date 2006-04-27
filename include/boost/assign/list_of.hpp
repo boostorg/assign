@@ -467,6 +467,12 @@ namespace assign_detail
         }
 
         template< class ForwardRange >
+        static_generic_list& range( ForwardRange& r )
+        {
+            return range( boost::begin(r), boost::end(r) );
+        }
+
+        template< class ForwardRange >
         static_generic_list& range( const ForwardRange& r )
         {
             return range( boost::begin(r), boost::end(r) );
