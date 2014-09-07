@@ -28,12 +28,12 @@ namespace boost
             assignment_exception( const char* _what ) 
             : what_( _what )
             { }
-        
-            virtual const char* what() const throw()
+
+            virtual const char* what() const BOOST_NOEXCEPT_OR_NOTHROW
             {
                 return what_;
             }
-        
+
         private:
                 const char* what_;
         };
