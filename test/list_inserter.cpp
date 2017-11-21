@@ -127,7 +127,8 @@ void check_list_inserter()
     BOOST_CHECK_EQUAL( team_score.size(), 3u );
     BOOST_CHECK_EQUAL( team_score[ "Team Foo" ][1], 1 );
     BOOST_CHECK_EQUAL( team_score[ "Team Bar" ][0], 0 );
-   
+
+#if defined( BOOST_NO_CXX11_HDR_INITIALIZER_LIST )
     team_score = list_of< score_pair >
                         ( "Team Foo",    list_of(1)(1)(0) )
                         ( "Team Bar",    list_of(0)(0)(0) )
@@ -135,7 +136,7 @@ void check_list_inserter()
     BOOST_CHECK_EQUAL( team_score.size(), 3u );
     BOOST_CHECK_EQUAL( team_score[ "Team Foo" ][1], 1 );
     BOOST_CHECK_EQUAL( team_score[ "Team Bar" ][0], 0 );
-
+#endif
 #endif
                         
 }
