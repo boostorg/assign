@@ -445,7 +445,7 @@ namespace assign_detail
     template< class T >
     struct assign_reference
     {
-        assign_reference()
+        assign_reference() : ref_(0)
         { /* intentionally empty */ }
 
         assign_reference( T& r ) : ref_(&r)
