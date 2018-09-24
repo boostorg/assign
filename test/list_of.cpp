@@ -210,7 +210,7 @@ void test_list_of()
 {
     ba::list_of< five >(1,2,3,4,5)(6,7,8,9,10);
     
-/* Maybe this could be usefull in a later version?
+/* Maybe this could be useful in a later version?
 
     // an anonymous lists, fulfills Range concept
     for_each( ba::list_of( T() )( T() )( T() ) );
@@ -226,7 +226,7 @@ void test_list_of()
 }
 
 //
-// @remark: ADL is required here, but it is a bit wierd to
+// @remark: ADL is required here, but it is a bit weird to
 //          open up namespace std. Perhaps Boost.Test needs a
 //          better configuration option. 
 //
