@@ -170,7 +170,7 @@ namespace assign_detail
         {
             typedef BOOST_DEDUCED_TYPENAME Array::value_type value_type;
 
-#if BOOST_WORKAROUND(BOOST_INTEL, <= 910 ) || BOOST_WORKAROUND(__SUNPRO_CC, <= 0x580 )
+#if BOOST_WORKAROUND(BOOST_INTEL, <= 910 ) || BOOST_WORKAROUND(__SUNPRO_CC, <= 0x5100 )
             BOOST_DEDUCED_TYPENAME remove_const<Array>::type ar;
 #else
             Array ar;
