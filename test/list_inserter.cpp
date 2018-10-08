@@ -64,7 +64,11 @@ void check_list_inserter()
     make_list_inserter( functor() )( 4 ),2;
 
     typedef void (vector<int>::* push_back_t)(const int&);
+#if BOOST_WORKAROUND(__GNUC__, == 4) && (__GNUC_MINOR__ == 3) && defined(__GXX_EXPERIMENTAL_CXX0X__)
+    push_back_t push_back_func = &vector<int>::push_back<const int&>;
+#else
     push_back_t push_back_func = &vector<int>::push_back;
+#endif
     make_list_inserter( boost::bind( push_back_func, &v, _1 ) )( 6 ),4;
 
     BOOST_CHECK_EQUAL( v.size(), 2u );

@@ -431,7 +431,14 @@ namespace assign_detail
             return range( boost::begin(r), boost::end(r) );
         }
 
-        template< class Container >
+        template
+        <
+            class Container
+#ifndef BOOST_NO_FUNCTION_TEMPLATE_DEFAULT_ARGS
+          , class Dummy1 = typename Container::difference_type
+          , class Dummy2 = typename Container::iterator
+#endif
+        >
         operator Container() const
         {
             return this-> BOOST_NESTED_TEMPLATE convert_to_container<Container>();
@@ -567,7 +574,14 @@ namespace assign_detail
             return range( boost::begin(r), boost::end(r) );
         }
 
-        template< class Container >
+        template
+        <
+            class Container
+#ifndef BOOST_NO_FUNCTION_TEMPLATE_DEFAULT_ARGS
+          , class Dummy1 = typename Container::difference_type
+          , class Dummy2 = typename Container::iterator
+#endif
+        >
         operator Container() const
         {
             return this-> BOOST_NESTED_TEMPLATE convert_to_container<Container>();
