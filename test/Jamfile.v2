@@ -18,6 +18,7 @@ rule assign-test ( name )
 test-suite assign :
     [ assign-test basic ]
     [ assign-test std ]
+    [ assign-test array ]
     [ assign-test list_of ]
     [ assign-test ptr_list_of ]
     [ assign-test static_list_of ]
