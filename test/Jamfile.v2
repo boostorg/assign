@@ -30,6 +30,7 @@ test-suite assign :
     [ assign-test email_example ]
     [ assign-test my_vector_example ]
     [ assign-test multi_index_container ]      
+    [ assign-test trac-12538 ]
     ;
 
 
