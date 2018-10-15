@@ -12,11 +12,12 @@
 #ifndef BOOST_ASSIGN_ASSIGNMENT_EXCEPTION_HPP
 #define BOOST_ASSIGN_ASSIGNMENT_EXCEPTION_HPP
 
-#if defined(_MSC_VER)
+#include <boost/config.hpp>
+#include <exception>
+
+#if defined(BOOST_HAS_PRAGMA_ONCE)
 # pragma once
 #endif
-
-#include <exception>
 
 namespace boost
 {    
