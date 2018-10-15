@@ -42,7 +42,13 @@
 #include <initializer_list>
 #endif
 
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+// some gcc < 4.7 do not support all of the variadic features required for boost::assign
+#if !(defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || BOOST_WORKAROUND(BOOST_GCC, < 40700) \
+       || defined(BOOST_NO_CXX11_RVALUE_REFERENCES))
+# define BOOST_ASSIGN_USE_VARIADIC_TEMPLATES
+#endif
+
+#if !defined(BOOST_ASSIGN_USE_VARIADIC_TEMPLATES)
 
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -418,7 +424,7 @@ namespace assign_detail
             return *this;
         }
 
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_ASSIGN_USE_VARIADIC_TEMPLATES)
 
 #ifndef BOOST_ASSIGN_MAX_PARAMS // use user's value
 #define BOOST_ASSIGN_MAX_PARAMS 5
@@ -708,7 +714,7 @@ namespace assign
         return gl;
     }
 
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_ASSIGN_USE_VARIADIC_TEMPLATES)
 
     template< class T >
     inline assign_detail::generic_list<T>
@@ -744,7 +750,7 @@ namespace assign
         return assign_detail::static_generic_list<const BOOST_DEDUCED_TYPENAME assign_detail::assign_decay<T>::type,N>( t );
     }
 
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_ASSIGN_USE_VARIADIC_TEMPLATES)
 
 #define BOOST_PP_LOCAL_LIMITS (1, BOOST_ASSIGN_MAX_PARAMETERS)
 #define BOOST_PP_LOCAL_MACRO(n) \
@@ -820,7 +826,7 @@ namespace assign
 } // namespace 'boost'
 
 
-#if defined(BOOST_NO_CXX11_VARIADIC_TEMPLATES) || defined(BOOST_NO_CXX11_RVALUE_REFERENCES)
+#if !defined(BOOST_ASSIGN_USE_VARIADIC_TEMPLATES)
 
 #undef BOOST_ASSIGN_PARAMS1
 #undef BOOST_ASSIGN_PARAMS2
