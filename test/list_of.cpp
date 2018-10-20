@@ -109,6 +109,14 @@ void test_sequence_list_of_int()
     BOOST_CHECK_EQUAL( c3.size(), 13u );
 #endif
 
+#if !defined( BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS )
+    C c4;
+    c4 = ba::list_of(1)(2)(3)(4);
+    BOOST_CHECK_EQUAL( c4.size(), 4u );
+    C c5(ba::list_of(1)(2)(3)(4)(5));
+    BOOST_CHECK_EQUAL( c5.size(), 5u );
+#endif
+
 #endif
 
     parameter_list p( ba::list_of(1)(2), 3u );
