@@ -509,9 +509,12 @@ namespace assign_detail
         {
             return this-> BOOST_NESTED_TEMPLATE convert_to_container<Container>();
         }
-#elif !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
-        template< class Container,
-            class = typename boost::disable_if< is_initializer_list<Container> >::type
+#elif !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
+        template< class Container
+# if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+          , class = typename boost::disable_if< is_initializer_list<Container> >::type
+# endif
+          , class = typename Container::iterator
         >
         operator Container() const
         {
@@ -672,9 +675,12 @@ namespace assign_detail
         {
             return this-> BOOST_NESTED_TEMPLATE convert_to_container<Container>();
         }
-#elif !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST) && !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
-        template< class Container,
-            class = typename boost::disable_if< is_initializer_list<Container> >::type
+#elif !defined(BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS)
+        template< class Container
+# if !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+          , class = typename boost::disable_if< is_initializer_list<Container> >::type
+# endif
+          , class = typename Container::iterator
         >
         operator Container() const
         {
