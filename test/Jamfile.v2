@@ -11,6 +11,8 @@
 import path ;
 import regex ;
 
+project : requirements /boost/assign//boost_assign ;
+
 rule assign-test ( name )
 {
     return [
@@ -67,7 +69,7 @@ test-suite assign :
     [ assign-test list_of_workaround ]
     [ assign-test email_example ]
     [ assign-test my_vector_example ]
-    [ assign-test multi_index_container ]      
+    [ assign-test multi_index_container ]
     ;
 
 
