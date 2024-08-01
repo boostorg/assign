@@ -11,7 +11,7 @@
 import path ;
 import regex ;
 
-project : requirements /boost/assign//boost_assign ;
+project : requirements <library>/boost/assign//boost_assign ;
 
 rule assign-test ( name )
 {
