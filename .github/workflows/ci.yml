@@ -231,11 +231,12 @@ jobs:
 
       - name: Upload coverage
         if: matrix.coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           disable_search: true
-          file: coverage.info
-          name: Github Actions
+          fail_ci_if_error: true
+          files: ./coverage.info
+          name: github-actions
           token: ${{secrets.CODECOV_TOKEN}}
           verbose: true
 
