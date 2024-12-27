@@ -227,6 +227,17 @@ jobs:
         if: matrix.coverage
         run: ci/codecov.sh "collect"
 
+      # https://github.com/codecov/codecov-action/issues/1296
+      - name: Get branch for coverage
+        id: coverage_branch
+        if: matrix.coverage
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "override_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+          else
+            echo "override_branch=" >> $GITHUB_OUTPUT
+          fi
+
       - name: Upload coverage
         if: matrix.coverage
         uses: codecov/codecov-action@v5
@@ -235,6 +246,7 @@ jobs:
           fail_ci_if_error: true
           files: coverage.info
           name: Github Actions
+          override_branch: ${{ steps.coverage_branch.outputs.override_branch }}
           token: ${{secrets.CODECOV_TOKEN}}
           verbose: true
 
