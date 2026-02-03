@@ -19,7 +19,6 @@
 #include <boost/assign/list_inserter.hpp>
 #include <boost/test/test_tools.hpp>
 #include <boost/function.hpp>
-#include <boost/bind.hpp>
 #include <vector>
 #include <stdexcept>
 

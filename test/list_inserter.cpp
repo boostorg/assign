@@ -21,7 +21,7 @@
 #include <boost/test/test_tools.hpp>
 #include <boost/array.hpp>
 #include <boost/function.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/functional.hpp>
 #include <iostream>
 #include <vector>
@@ -54,6 +54,7 @@ void check_list_inserter()
 {
     using namespace std;
     using namespace boost;
+    using namespace boost::placeholders;
     using namespace boost::assign;
     vector<int> v;
     
